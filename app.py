@@ -19,12 +19,13 @@ def close_connection(exception):
         db.close()
 
 # # ONLY RUN ON FIRST EXECUTION!
-# def create_dbtable():
-#     cursor = get_db().cursor()
-#     cursor.execute('CREATE TABLE articles (title TEXT, author TEXT, contents TEXT)')
+def create_dbtable():
+    cursor = get_db().cursor()
+    cursor.execute('CREATE TABLE articles (title TEXT, author TEXT, contents TEXT)')
 
 @app.route('/', methods=['GET'])
 def main():
+    # create_dbtable()
     # create_new_article_page('Jack', 'Jacksz', 'Jackkk')
     # create_new_article_page('Jack','Jay','s')
     create_new_article_page('Jack Donofrio','Jack Donofrio','SJ Class of 2021. Started Coding Club')

@@ -1,0 +1,49 @@
+p {
+    font-family: monospace;
+    width:34%;
+    margin: auto;
+    text-align: center;
+    font-size: 25px;
+}
+pre {
+    margin: auto;
+    width: 25%;
+    padding: 5px;
+}
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(77, 0, 0);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+.sidenav a:hover {
+    color: yellow;
+}
+.title {
+    font-family: monospace;
+    float: right;
+    padding: 20px 40px;
+    text-align: left;
+    font-size: 75px;
+}
+.title:hover {
+    color: rgb(92, 105, 92);
+}
+.para {
+    font-family: monospace;
+    float: right;
+    text-align: left;
+    font-size: 20px;
+}
