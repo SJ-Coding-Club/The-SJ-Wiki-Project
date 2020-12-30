@@ -11,15 +11,16 @@
     <a href='/new/article'>New</a>
 </div>
 <body>
-    <div class='title'>
-        {{  title  }}
-        <p>
-            <div class='para'>
-                Author: {{  author  }}
-                <br>
-                {{ contents }}
-            </div>
-        </p>
+    <div class="title">
+        All Articles  
     </div>
 </body>
+<table style="padding-left: 200px; padding-top: 50px; font-family: monospace;">
+    {% for row in rows %}
+        <tr>
+            <td><a href="article/{{ row[0] }}">{{ row[0] }}</a> written by {{ row[1] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 </html>

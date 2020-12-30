@@ -25,39 +25,71 @@ def create_dbtable():
 
 @app.route('/', methods=['GET'])
 def main():
-    # create_dbtable()
-    # create_new_article_page('Jack', 'Jacksz', 'Jackkk')
-    # create_new_article_page('Jack','Jay','s')
-    create_new_article_page('Jack Donofrio','Jack Donofrio','SJ Class of 2021. Started Coding Club')
-    # access_article_by_title('Jack')
-    # delete_article_by_title('Jack')
-    return render_template(
-        'index.html',
-        ip=request.remote_addr
-    )
+    try:
+        # create_dbtable()
+        create_new_article_page('Test Page', 'Jack Donofrio', 'This is a test page')
+        create_new_article_page('Jack Donofrio','Jack Donofrio','SJ Class of 2021. Started Coding Club')
+        # delete_article_by_title('Jack')
+        return render_template(
+            'index.html',
+            ip=request.remote_addr
+        )
+    except:
+        return render_template(
+            'errorpage.html'
+        )
 
 @app.route('/about')
 def aboutpage():
-    return render_template(
-        'about.html'
-    )
+    try:
+        return render_template(
+            'about.html'
+        )
+    except:
+        return render_template(
+            'errorpage.html'
+        )
+
+# Send user to list of all pages
+@app.route('/all')
+def all():
+    try:
+        all_rows = get_db().cursor().execute('SELECT title, author, contents FROM articles').fetchall()
+        return render_template(
+            'allpage.html',
+            rows=all_rows
+        )
+    except:
+        return render_template(
+            'errorpage.html'
+        )
 
 # Sends user to random article
 @app.route('/random')
 def randompage():
-    cursor = get_db().cursor()
-    rows = cursor.execute(f"SELECT title, author, contents FROM articles").fetchall()
-    random_row = rows[random.randint(0,len(rows)-1)]
-    return render_template(
-        'articlepage.html',
-        title=random_row[0],
-        author=random_row[1],
-        contents=random_row[2]
-    )
+    try:
+        cursor = get_db().cursor()
+        rows = cursor.execute(f"SELECT title, author, contents FROM articles").fetchall()
+        random_row = rows[random.randint(0,len(rows)-1)]
+        return render_template(
+            'articlepage.html',
+            title=random_row[0],
+            author=random_row[1],
+            contents=random_row[2]
+        )
+    except:
+        return render_template(
+            'errorpage.html'
+        )
 
 @app.route('/new/article')
 def new_article_page():
-    return render_template('')
+    try:
+        return render_template('')
+    except:
+        return render_template(
+            'errorpage.html'
+        )
 
 class Article:
     def __init__(self, title, author, contents):
@@ -70,12 +102,17 @@ class Article:
 def load_article(title):
     title = title.replace('-', ' ')
     article = access_article_by_title(title)
-    return render_template(
-        'articlepage.html',
-        title=article.title,
-        author=article.author,
-        contents=article.contents
-    )
+    try:
+        return render_template(
+            'articlepage.html',
+            title=article.title,
+            author=article.author,
+            contents=article.contents
+        )
+    except:
+        return render_template(
+            'errorpage.html'
+        )
 
 def create_table(connection, create_table_sql):
     try:
@@ -120,11 +157,6 @@ def modify_article_title(old_title, new_title):
 # TO-DO: Add validation to prevent SQL-Injection attacks
 def validate_entry(text):
     return text.strip()
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
