@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The SJ Wiki Project</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div class='sidenav' style='font-family:monospace'>
+	<a href='/'>Home</a>
+	<a href='/all'>All</a>
+	<a href='/random'>Random</a>
+	<a href='/new/article'>New</a>
+</div>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

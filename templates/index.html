@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>The SJ Wiki Project</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<div class='sidenav' style='font-family:monospace'>
-	<a href='/'>Home</a>
-	<a href='/all'>All</a>
-	<a href='/random'>Random</a>
-	<a href='/new/article'>New</a>
-</div>
-<body>
-	<br>
-	<p style="font-weight: bold;">
-		The SJ Wiki Project
-	</p>
-	<br>
-<p>The goal of this project is to create an open-source, open-edit wiki page for students, alumni, & faculty to store information about SJ and its history.</p>
-<br>
-<p>As part of this experiment, anyone will be allowed to edit wiki articles. However, upon doing so, your IP address will be logged in the edits/revision history, similar to how Wikipedia's editing system works.</p>             
-<br>
-<p>Your IP Address is: {{  ip  }}</p>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+	<body>
+		<br>
+		<p style="font-weight: bold;">
+			The SJ Wiki Project
+		</p>
+		<br>
+		<p>The goal of this project is to create an open-source, open-edit wiki page for students, alumni, & faculty to store information about SJ and its history.</p>
+		<br>
+		<p>As part of this experiment, anyone will be allowed to edit wiki articles. However, upon doing so, your IP address will be logged in the edits/revision history, similar to how Wikipedia's editing system works.</p>             
+		<br>
+		<p>Your IP Address is: {{  ip  }}</p>
+	</body>
+{% endblock content %}

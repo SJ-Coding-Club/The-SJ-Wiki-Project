@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>The SJ Wiki Project</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<div class='sidenav' style='font-family:monospace'>
-    <a href='/'>Home</a>
-    <a href='/all'>All</a>
-    <a href='/random'>Random</a>
-    <a href='/new/article'>New</a>
-</div>
-<body>
-    <div class="title">
-        All Articles  
-    </div>
-</body>
-<table style="padding-left: 200px; padding-top: 50px; font-family: monospace;">
-    {% for row in rows %}
-        <tr>
-            <td><a href="article/{{ row[0] }}">{{ row[0] }}</a> written by {{ row[1] }}</td>
-        </tr>
-    {% endfor %}
-</table>
-
-</html>
+{% extends "layout.html" %}
+{% block content %}
+    <body>
+        <div class="title">
+            All Articles  
+        </div>
+    </body>
+    <table style="padding-left: 200px; padding-top: 50px; font-family: monospace;">
+        {% for row in rows %}
+            <tr>
+                <td><a href="article/{{ row[0] }}">{{ row[0] }}</a> written by {{ row[1] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
