@@ -1,10 +1,7 @@
-from flask import Flask, render_template, request, g
+from flask import render_template, request, g
+from sj_wiki import app, DATABASE
 import sqlite3
 import random
-
-DATABASE = 'test.db'
-
-app = Flask(__name__, template_folder='templates')
 
 def get_db():
     db = getattr(g, '_database',None)
@@ -157,6 +154,3 @@ def modify_article_title(old_title, new_title):
 # TO-DO: Add validation to prevent SQL-Injection attacks
 def validate_entry(text):
     return text.strip()
-
-if __name__ == '__main__':
-    app.run(debug=True)
